@@ -42,9 +42,14 @@ const loginSchema = Joi.object({
     .messages({ 'any.required': `missing required password field` }),
 });
 
+const subscriptionSchema = Joi.object({
+  subscription: Joi.string().valid('pro', 'starter', 'business').required(),
+});
+
 const schemas = {
   registerSchema,
   loginSchema,
+  subscriptionSchema,
 };
 
 const User = model('user', userSchema);
