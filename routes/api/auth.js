@@ -11,5 +11,7 @@ router.get('/current', authenticate, ctrl.current);
 router.post('/logout', authenticate, ctrl.logout);
 router.patch('/subscription', authenticate, validateBody(schemas.subscriptionSchema), ctrl.subscription);
 router.patch('/avatars', authenticate, upload.single('avatar'), ctrl.updateAvatar);
+router.get('/verify/:verificationToken', ctrl.verifyEmail);
+router.post('/verify', validateBody(schemas.emailSchema), ctrl.resendVerifyEmail);
 
 module.exports = router;
